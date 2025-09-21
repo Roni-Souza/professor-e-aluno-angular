@@ -1,0 +1,11 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Teste",
+      "email": "teste@outlook.com",
+      "area": "T.I",
+      "degree": "Doutorado"
+    }
+  ]
+}

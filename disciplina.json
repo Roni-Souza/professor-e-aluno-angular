@@ -1,0 +1,10 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Engenharia de software ll",
+      "prerequisite": "Engenharia de software l",
+      "workload": "120"
+    }
+  ]
+}
