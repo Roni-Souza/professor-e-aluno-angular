@@ -17,6 +17,7 @@
     </div>
 
     <div class="mb-3">
+<<<<<<< HEAD
       <label for="inputDegree" class="form-label">Graduação</label>
       <select formControlName="degree" class="form-select" id="inputDegree">
         <option value="">Selecione...</option>
@@ -81,6 +82,17 @@
 
 
     
+=======
+      <label for="inputarea" class="form-label">Area</label>
+      <input formControlName="area" type="text" class="form-control" id="inputarea">
+    </div>
+
+        <div class="mb-3">
+      <label for="inputDegree" class="form-label">Graduação</label>
+      <input formControlName="degree"type="text" class="form-control" id="inputDegree">
+    </div>
+  
+>>>>>>> 941b4fd3250ddd0c0e5937011d1866964599e42d
     <button *ngIf="!isEditing"   type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
     <button *ngIf="isEditing"   type="submit" class="btn btn-primary"  (click)="update()">Atualizar</button>
 
@@ -99,8 +111,13 @@ Total de professores: {{products.length}}
         <h5 class="card-title">{{p.name}}</h5>
         <h6 class="card-subtitle mb-2 text-muted">Email: {{p.email}}</h6>
         <p class="card-text">
+<<<<<<< HEAD
           Graduação: {{p.degree}}<br>
           Matéria: {{p.materia}} 
+=======
+          Área: {{p.area}} <br>
+          Graduação: {{p.degree}}
+>>>>>>> 941b4fd3250ddd0c0e5937011d1866964599e42d
         </p>
         <div class="mt-auto">
           <button class="btn btn-danger me-2" (click)="onClickDelete(p)">

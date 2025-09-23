@@ -3,6 +3,10 @@ import { Product } from '../product';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProductService } from '../product-service';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 941b4fd3250ddd0c0e5937011d1866964599e42d
 @Component({
   selector: 'app-professor-component',
   standalone: false,
@@ -10,6 +14,7 @@ import { ProductService } from '../product-service';
   styleUrl: './professor-component.css'
 })
 export class ProfessorComponent {
+<<<<<<< HEAD
   products: Product[] = [];
   formGroupProfessor: FormGroup;
   isEditing: boolean = false;
@@ -18,10 +23,20 @@ export class ProfessorComponent {
     private formBuilder: FormBuilder,
     private service: ProductService
   ) {
+=======
+products: Product[] = [];
+  formGroupProfessor: FormGroup;
+  isEditing: boolean = false;
+
+  constructor(private formBuilder: FormBuilder,
+    private service: ProductService) {
+
+>>>>>>> 941b4fd3250ddd0c0e5937011d1866964599e42d
     this.formGroupProfessor = formBuilder.group({
       id: [''],
       name: [''],
       email: [''],
+<<<<<<< HEAD
       materia: [''],
       degree: [''],
 
@@ -112,4 +127,60 @@ export class ProfessorComponent {
       materia: materiasSelecionadas.join(', ')
     });
   }
+=======
+      area: [''],
+      degree: ['']
+    });
+
+  }
+
+
+  ngOnInit(): void {
+    this.service.getAllProducts().subscribe(
+      {
+        next: json => this.products = json
+      }
+    );
+  }
+
+  save() {
+    this.service.save(this.formGroupProfessor.value).subscribe(
+      {
+        next: json => {
+          this.products.push(json);
+          this.formGroupProfessor.reset();
+        }
+      }
+    )
+  }
+
+  onClickDelete(product: Product) {
+    this.service.delete(product).subscribe(
+      {
+        next: () => {
+          this.products = this.products.filter(p => p.id != product.id);
+        }
+      }
+    )
+  }
+
+  onClickUpdate(product: Product) {
+      this.formGroupProfessor.setValue(product);
+      this.isEditing = true;
+  }
+
+  update() {
+     this.service.update(this.formGroupProfessor.value).subscribe(
+        {
+          next: json => {
+            let index = this.products.findIndex(p => p.id == json.id);
+            this.products[index] = json;
+            this.isEditing = false;
+            this.formGroupProfessor.reset();
+          }
+        }
+      )
+  }
+
+>>>>>>> 941b4fd3250ddd0c0e5937011d1866964599e42d
 }

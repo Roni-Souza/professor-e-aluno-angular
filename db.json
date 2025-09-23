@@ -2,6 +2,7 @@
   "products": [
     {
       "id": 1,
+<<<<<<< HEAD
       "name": "teste",
       "email": "teste@outlook.com",
       "materia": "Análise e Desenvolvimento de Sistemas, Banco de Dados",
@@ -13,6 +14,12 @@
       "financas": false,
       "marketing": false,
       "administracao": false
+=======
+      "name": "Teste",
+      "email": "teste@outlook.com",
+      "area": "T.I",
+      "degree": "Doutorado"
+>>>>>>> 941b4fd3250ddd0c0e5937011d1866964599e42d
     }
   ]
 }

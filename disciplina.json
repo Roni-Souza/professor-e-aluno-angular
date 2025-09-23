@@ -2,8 +2,13 @@
   "products": [
     {
       "id": 1,
+<<<<<<< HEAD
       "name": "Banco de Dados",
       "prerequisite": "SQL Server",
+=======
+      "name": "Engenharia de software ll",
+      "prerequisite": "Engenharia de software l",
+>>>>>>> 941b4fd3250ddd0c0e5937011d1866964599e42d
       "workload": "120"
     }
   ]
