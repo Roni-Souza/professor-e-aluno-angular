@@ -1,0 +1,18 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "teste",
+      "email": "teste@outlook.com",
+      "materia": "Análise e Desenvolvimento de Sistemas, Banco de Dados",
+      "degree": "bacharelado",
+      "analise": true,
+      "bancoDeDados": true,
+      "redes": false,
+      "gestaoComercial": false,
+      "financas": false,
+      "marketing": false,
+      "administracao": false
+    }
+  ]
+}
