@@ -1,0 +1,76 @@
+<div class="container">
+
+  <div class="display-4 text-center">Cadastro de Disciplina</div>
+
+  <form [formGroup]="formGroupDisciplina">
+   
+    <!-- Nome da disciplina -->
+    <div class="mb-3">
+      <label for="inputName" class="form-label">Disciplina</label>
+      <input formControlName="name" type="text" class="form-control" id="inputName">
+
+      <div class="text-danger" *ngIf="formGroupDisciplina.get('name')?.touched && formGroupDisciplina.get('name')?.hasError('required')">
+        O nome da disciplina é obrigatório.
+      </div>
+      <div class="text-danger" *ngIf="formGroupDisciplina.get('name')?.touched && formGroupDisciplina.get('name')?.hasError('minlength')">
+        O nome deve ter pelo menos 3 caracteres.
+      </div>
+    </div>
+    
+    <!-- Pré-requisito -->
+    <div class="mb-3">
+      <label for="inputprerequisite" class="form-label">Pré-requisito</label>
+      <input formControlName="prerequisite" type="text" class="form-control" id="prerequisite">
+
+      <div class="text-danger" *ngIf="formGroupDisciplina.get('prerequisite')?.touched && formGroupDisciplina.get('prerequisite')?.hasError('required')">
+        O pré-requisito é obrigatório.
+      </div>
+    </div>
+
+    <!-- Carga horária -->
+    <div class="mb-3">
+      <label class="form-label">Carga Horária</label>
+      
+      <div class="form-check">
+        <input class="form-check-input" formControlName="workload" type="radio" id="workload1" value="60">
+        <label class="form-check-label" for="workload1">60 horas</label>
+      </div>
+
+      <div class="form-check">
+        <input class="form-check-input" formControlName="workload" type="radio" id="workload2" value="120">
+        <label class="form-check-label" for="workload2">120 horas</label>
+      </div>
+
+      <div class="text-danger" *ngIf="formGroupDisciplina.get('workload')?.touched && formGroupDisciplina.get('workload')?.hasError('required')">
+        A carga horária é obrigatória.
+      </div>
+    </div>
+
+    <!-- Botões -->
+    <button *ngIf="!isEditing" type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+    <button *ngIf="isEditing" type="submit" class="btn btn-primary" (click)="update()">Atualizar</button>
+
+  </form>
+
+  <div class="display-4 text-center">Disciplinas Cadastradas</div>
+  Total de Disciplinas: {{products.length}}
+  <br>
+
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <div class="col" *ngFor="let p of products">
+      <div class="card h-100">
+        <img src="/img/livro.jpg" class="card-img-top" alt="Imagem da disciplina">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{p.name}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Pré-requisito: {{p.prerequisite}}</h6>
+          <p class="card-text">Carga horária: {{p.workload}} horas</p>
+          <div class="mt-auto">
+            <button class="btn btn-danger me-2" (click)="onClickDelete(p)">Remover</button>
+            <button class="btn btn-secondary" (click)="onClickUpdate(p)">Alterar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

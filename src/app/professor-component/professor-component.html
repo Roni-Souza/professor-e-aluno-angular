@@ -1,0 +1,139 @@
+<div class="container">
+
+  <div class="display-4 text-center">Cadastro de Professor</div>
+  
+  
+
+  <form [formGroup]="formGroupProfessor">
+   
+   <div class="mb-3">
+  <label for="inputName" class="form-label">Nome</label>
+  <input formControlName="name" type="text" class="form-control" id="inputName">
+  <div class="text-danger" *ngIf="formGroupProfessor.get('name')?.touched && formGroupProfessor.get('name')?.hasError('required')">
+    O nome é obrigatório.
+  </div>
+  <div class="text-danger" *ngIf="formGroupProfessor.get('name')?.touched && formGroupProfessor.get('name')?.hasError('minlength')">
+    O nome deve ter pelo menos 3 caracteres.
+  </div>
+</div>
+
+<div class="mb-3">
+  <label for="inputemail" class="form-label">Email</label>
+  <input formControlName="email" type="email" class="form-control" id="inputemail">
+  <div class="text-danger" *ngIf="formGroupProfessor.get('email')?.touched && formGroupProfessor.get('email')?.hasError('required')">
+    O email é obrigatório.
+  </div>
+  <div class="text-danger" *ngIf="formGroupProfessor.get('email')?.touched && formGroupProfessor.get('email')?.hasError('email')">
+    O email não é válido.
+  </div>
+</div>
+
+<div class="mb-3">
+  <label for="inputDegree" class="form-label">Graduação</label>
+  <select formControlName="degree" class="form-select" id="inputDegree">
+    <option value="">Selecione...</option>
+    <option value="bacharelado">Bacharelado</option>
+    <option value="tecnologico">Tecnólogo</option>
+  </select>
+  <div class="text-danger" *ngIf="formGroupProfessor.get('degree')?.touched && formGroupProfessor.get('degree')?.hasError('required')">
+    A graduação é obrigatória.
+  </div>
+</div>
+
+    <div class="mb-3">
+      <label class="form-label d-block">Matérias</label>
+    
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="materia1" formControlName="analise" >
+        <label class="form-check-label" for="materia1">
+          Análise e Desenvolvimento de Sistemas
+        </label>
+      </div>
+    
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="materia2" formControlName="bancoDeDados" >
+        <label class="form-check-label" for="materia2">
+          Banco de Dados
+        </label>
+      </div>
+    
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="materia3" formControlName="redes" >
+        <label class="form-check-label" for="materia3">
+          Redes
+        </label>
+      </div>
+    
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="materia4" formControlName="gestaoComercial" >
+        <label class="form-check-label" for="materia4">
+          Gestão Comercial
+        </label>
+      </div>
+    
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="materia5" formControlName="financas" >
+        <label class="form-check-label" for="materia5">
+          Finanças
+        </label>
+      </div>
+    
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="materia6" formControlName="marketing" >
+        <label class="form-check-label" for="materia6">
+          Marketing
+        </label>
+      </div>
+    
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="materia7" formControlName="administracao" >
+        <label class="form-check-label" for="materia7">
+          Administração
+        </label>
+      </div>
+    </div>
+    
+
+
+    
+    <button *ngIf="!isEditing"   type="submit" class="btn btn-primary" (click)="save()">Salvar</button>
+    <button *ngIf="isEditing"   type="submit" class="btn btn-primary"  (click)="update()">Atualizar</button>
+
+    
+  </form>
+
+
+<div class="display-4 text-center">Professores Cadastrados</div>
+Total de professores: {{products.length}}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <div class="col" *ngFor="let p of products">
+    <div class="card h-100">
+      <img src="/img/professor.jpg" class="card-img-top" alt="Imagem do professor">
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-title">{{p.name}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Email: {{p.email}}</h6>
+        <p class="card-text">
+          Graduação: {{p.degree}}<br>
+          Matéria: {{p.materia}} 
+        </p>
+        <div class="mt-auto">
+          <button class="btn btn-danger me-2" (click)="onClickDelete(p)">
+            Remover
+          </button>
+          <button class="btn btn-secondary" (click)="onClickUpdate(p)">
+            Alterar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+   
+    
+ 
+
+
+
+
+</div>
